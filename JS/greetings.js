@@ -6,6 +6,19 @@ const logOutInput = document.getElementById("logOutInput");
 const HIDDEN_CLASSNAME = "hidden";
 const USERNAME_KEY = "username";
 
+const savedUsername = localStorage.getItem(USERNAME_KEY);
+
+if (savedUsername == null) {
+  //show the form
+  loginForm.classList.remove(HIDDEN_CLASSNAME);
+  loginForm.addEventListener("submit", onLoginSubmit);
+} else {
+  //show the greetings
+  loginForm.classList.add(HIDDEN_CLASSNAME);
+  logOutInput.classList.remove(HIDDEN_CLASSNAME);
+  paintGreetings(savedUsername);
+}
+
 function onLoginSubmit(event) {
   event.preventDefault();
   loginForm.classList.add(HIDDEN_CLASSNAME);
@@ -28,15 +41,3 @@ function logOutRun() {
 
 loginForm.addEventListener("submit", onLoginSubmit);
 logOutInput.addEventListener("click", logOutRun);
-
-const savedUsername = localStorage.getItem(USERNAME_KEY);
-
-if (savedUsername == null) {
-  //show the form
-  loginForm.classList.remove(HIDDEN_CLASSNAME);
-  loginForm.addEventListener("submit", onLoginSubmit);
-} else {
-  //show the greetings
-  logOutInput.classList.remove(HIDDEN_CLASSNAME);
-  paintGreetings(savedUsername);
-}
