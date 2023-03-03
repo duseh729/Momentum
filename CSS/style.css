@@ -11,3 +11,6 @@ body {
   margin: auto;
   padding: 15px;
 }
+.hidden {
+  display: none;
+}
