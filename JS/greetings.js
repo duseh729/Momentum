@@ -6,9 +6,7 @@ const logOutInput = document.getElementById("logOutInput");
 const HIDDEN_CLASSNAME = "hidden";
 const USERNAME_KEY = "username";
 
-const savedUsername = localStorage.getItem(USERNAME_KEY);
-
-console.log(savedUsername);
+let savedUsername = localStorage.getItem(USERNAME_KEY);
 
 userIs();
 function userIs() {
@@ -31,6 +29,7 @@ function onLoginSubmit(event) {
   localStorage.setItem(USERNAME_KEY, loginInput.value);
   paintGreetings(loginInput.value);
   loginInput.value = "";
+  savedUsername = localStorage.getItem(USERNAME_KEY);
   userIs();
 }
 
